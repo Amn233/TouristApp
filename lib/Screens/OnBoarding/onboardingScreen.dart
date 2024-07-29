@@ -56,7 +56,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(appSize.height * 0.016),
+                  padding: EdgeInsets.only(right: appSize.width*0.03,top: appSize.height*0.04),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: TextButton(
@@ -77,7 +77,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: CustomText(
                         title: currentIndex < onboarding.length - 1 ? 'Skip' : '',
                         textColor: Colors.white,
-                        fontSize: appSize.height * 0.022,
+                        fontSize: appSize.height * 0.02,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -106,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             CustomText(
                               title: onboarding[index]['title']!,
                               textColor: Colors.white,
-                              fontSize: appSize.height * 0.032,
+                              fontSize: appSize.height * 0.03,
                               fontFamily: "OpenSans",
                               textAlign: TextAlign.center,
                             ),
@@ -114,7 +114,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             CustomText(
                               title: onboarding[index]['desc']!,
                               textColor: Colors.white,
-                              fontSize: appSize.height * 0.022,
+                              fontSize: appSize.height * 0.02,
                               fontFamily: "OpenSans",
                               textAlign: TextAlign.center,
                             ),

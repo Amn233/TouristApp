@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:touristapp/CustomWidgets/customButton.dart';
 import 'package:touristapp/CustomWidgets/customTextField.dart';
 import 'package:touristapp/Screens/Auth/View/loginScreen.dart';
 import 'package:touristapp/Screens/Auth/View/otpScreen.dart';
+import 'package:touristapp/Screens/HomeScreen/homescreen.dart';
 import 'package:touristapp/resources/resource.dart';
 
 import '../../../CustomWidgets/customText.dart';
@@ -22,14 +24,7 @@ class _RegisterState extends State<Register> {
   bool _isPasswordVisible = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => OtpScreen()),
-      );
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -48,20 +43,20 @@ class _RegisterState extends State<Register> {
                 CustomText(
                   title: Resource.texts.register,
                   textColor: Resource.colors.whiteColor,
-                  fontSize: appSize.height * 0.040,
+                  fontSize: appSize.height * 0.033,
                   textAlign: TextAlign.center,
                 ),
                 CustomText(
                   title: Resource.texts.welcome,
                   textColor: Resource.colors.whiteColor,
-                  fontSize: appSize.height * 0.022,
+                  fontSize: appSize.height * 0.0186,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: appSize.height * 0.07),
                 CustomTextField(
                   hintText: "Full Name",
                   controller: nameController,
-                  prefixIcon: Icons.person_outline,
+                  prefixIcon: "assets/svgs/profile.svg",
                   obscureText: false,
                   validator: FieldValidator.validateName,
                   keyboardType: TextInputType.text,
@@ -72,7 +67,7 @@ class _RegisterState extends State<Register> {
                 CustomTextField(
                   hintText: "Email/Phone number",
                   controller: emailController,
-                  prefixIcon: Icons.email_outlined,
+                  prefixIcon:"assets/svgs/message.svg",
                   obscureText: false,
                   validator: FieldValidator.validateEmail,
                   keyboardType: TextInputType.emailAddress,
@@ -83,7 +78,7 @@ class _RegisterState extends State<Register> {
                 CustomTextField(
                   hintText: "Phone Number",
                   controller: phoneController,
-                  prefixIcon: Icons.phone,
+
                   obscureText: false,
                   validator: FieldValidator.validatePhone,
                   keyboardType: TextInputType.phone,
@@ -94,7 +89,7 @@ class _RegisterState extends State<Register> {
                 CustomTextField(
                   hintText: "Password",
                   controller: passwordController,
-                  prefixIcon: Icons.lock_outline,
+                  prefixIcon: "assets/svgs/lock.svg",
                   obscureText: !_isPasswordVisible,
                   validator: FieldValidator.validatePassword,
                   keyboardType: TextInputType.text,
@@ -109,32 +104,32 @@ class _RegisterState extends State<Register> {
                   suffixIconColor: Resource.colors.mainColor,
                 ),
                 SizedBox(height: appSize.height * 0.13),
-                GestureDetector(
-                  onTap: _submitForm,
-                  child: Container(
-                    height: 55,
-                    width: 400,
-                    color: Colors.white,
-                    child: Center(
-                      child: CustomText(
-                        title: Resource.texts.register,
-                        textColor: Resource.colors.mainColor,
-                        fontSize: 20,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                Center(
+                  child: AppButton(
+                    onPressed: (){
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => OtpScreen()),
+                      );
+                    },
+                    color: Resource.colors.whiteColor,
+                    width: appSize.width * 0.9,
+                    text: Resource.texts.register,
+                    height: appSize.height * 0.064,
+                    textColor: Resource.colors.mainColor,
                   ),
                 ),
-                SizedBox(height: appSize.height * 0.005),
+                SizedBox(height: appSize.height * 0.025),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomText(
                       title: Resource.texts.already,
                       textColor: Resource.colors.whiteColor,
-                      fontSize: appSize.height * 0.02,
+                      fontSize: appSize.height * 0.0185,
                       textAlign: TextAlign.center,
                     ),
+                    SizedBox(width: 5,),
                     GestureDetector(
                       onTap: () {
                         Navigator.pushReplacement(
@@ -145,7 +140,7 @@ class _RegisterState extends State<Register> {
                       child: CustomText(
                         title: Resource.texts.login,
                         textColor: Colors.yellow,
-                        fontSize: appSize.height * 0.02,
+                        fontSize: appSize.height * 0.0185,
                         textAlign: TextAlign.center,
                       ),
                     )

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:touristapp/Resources/resource.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
-  final IconData prefixIcon;
+  var prefixIcon;
   final IconData? suffixIcon;
   final bool obscureText;
   final String? Function(String?)? validator;
@@ -17,7 +18,7 @@ class CustomTextField extends StatelessWidget {
   CustomTextField({
     required this.hintText,
     required this.controller,
-    required this.prefixIcon,
+     this.prefixIcon,
     this.suffixIcon,
     required this.obscureText,
     this.validator,
@@ -30,27 +31,57 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var appSize=MediaQuery.of(context).size;
     return TextFormField(
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
       validator: validator,
+cursorColor: Resource.colors.mainColor,
+      style: TextStyle(
+        color: Resource.colors.mainColor,
+        fontSize: appSize.width*0.032,
+          fontWeight: FontWeight.w400
+      ),
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(color: hintTextColor ?? Colors.grey),
-        prefixIcon: Icon(prefixIcon, color: prefixIconColor ?? Colors.grey),
+        hintStyle: TextStyle(color: Resource.colors.mainColor,fontSize:appSize.width*0.032,fontWeight: FontWeight.w400 ),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child:
+          prefixIcon != null?
+          SvgPicture.asset(prefixIcon, color: Resource.colors.mainColor):Image.asset("assets/svgs/Phone.png"),
+        ),
         suffixIcon: suffixIcon != null
             ? IconButton(
-          icon: Icon(suffixIcon, color: suffixIconColor ?? Colors.grey),
+          icon: Icon(suffixIcon, color: Resource.colors.mainColor),
           onPressed: onSuffixIconPressed,
         )
             : null,
+        errorBorder: new OutlineInputBorder(
+            borderSide: BorderSide(
+                color: Resource.colors.whiteColor, width: 1),
+            borderRadius: BorderRadius.circular(10.0)),
+        focusedErrorBorder: new OutlineInputBorder(
+            borderSide:
+            BorderSide(color: Resource.colors.mainColor, width: 1),
+            borderRadius: BorderRadius.circular(10.0)),
         border: OutlineInputBorder(
+          borderSide: BorderSide(
+              color: Resource.colors.whiteColor, width: 1.2),
           borderRadius: BorderRadius.circular(10.0),
         ),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: Resource.colors.mainColor, width: 1),
+            borderRadius: BorderRadius.circular(10.0)),
+        focusedBorder: OutlineInputBorder(
+            borderSide:
+            BorderSide(color: Resource.colors.mainColor, width: 1),
+            borderRadius: BorderRadius.circular(10.0)),
         filled: true,
         fillColor: Colors.white,
-        errorStyle: TextStyle(fontSize: 15.0,color: Resource.colors.whiteColor),
+        errorStyle: TextStyle(fontSize: 7.0,color: Resource.colors.whiteColor),
       ),
     );
   }

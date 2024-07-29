@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:touristapp/resources/resource.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -19,14 +20,14 @@ class CustomDrawer extends StatelessWidget {
                 SizedBox(height: appSize.height * 0.05),
                 CircleAvatar(
                   radius:  appSize.height * 0.060,
-                  backgroundImage: NetworkImage('https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg'), // Placeholder image
+                  backgroundImage: AssetImage("assets/images/dp.jpg"), // Placeholder image
                 ),
                 SizedBox(height: appSize.height * 0.02),
                 Text(
-                  'Amna Tahir',
+                  'Muhammad Zohaib',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: appSize.height * 0.024,
+                    fontSize: appSize.height * 0.022,
                   ),
                 ),
               ],
@@ -37,62 +38,62 @@ class CustomDrawer extends StatelessWidget {
               child: Divider(color: Colors.yellow, thickness: appSize.height * 0.001),
             ),
             ListTile(
-              leading: Icon(Icons.home, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/home.svg"),
               title: Text('Hotels', style: TextStyle(color: Colors.white)),
               onTap: () {
 
               },
             ),
             ListTile(
-              leading: Icon(Icons.grid_view_rounded, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/menu.svg"),
               title: Text('Food', style: TextStyle(color: Colors.white)),
               onTap: () {
               },
             ),
             ListTile(
-              leading: Icon(Icons.grid_view_rounded, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/menuAdd.svg"),
               title: Text('Clubs & Bars', style: TextStyle(color: Colors.white)),
               onTap: () {
 
               },
             ),
             ListTile(
-              leading: Icon(Icons.grid_view_rounded, color: Colors.white),
+              leading:SvgPicture.asset("assets/svgs/qrcode.svg"),
               title: Text('Tourist Attractions', style: TextStyle(color: Colors.white)),
               onTap: () {
 
               },
             ),
             ListTile(
-              leading: Icon(Icons.image, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/removeGallery.svg"),
               title: Text('Excursion', style: TextStyle(color: Colors.white)),
               onTap: () {
 
               },
             ),
             ListTile(
-              leading: Icon(Icons.star_border, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/star.svg"),
               title: Text('Sports', style: TextStyle(color: Colors.white)),
               onTap: () {
 
               },
             ),
             ListTile(
-              leading: Icon(Icons.grid_view_rounded, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/info.svg"),
               title: Text('Clubs & Bars', style: TextStyle(color: Colors.white)),
               onTap: () {
 
               },
             ),
             ListTile(
-              leading: Icon(Icons.logout, color: Colors.white),
+              leading: Icon(Icons.car_rental, color: Colors.white),
               title: Text('Taxi & Cars', style: TextStyle(color: Colors.white)),
               onTap: () {
 
               },
             ),
             ListTile(
-              leading: Icon(Icons.logout, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/Logout.svg"),
               title: Text('Shopping', style: TextStyle(color: Colors.white)),
               onTap: () {
 
@@ -103,7 +104,7 @@ class CustomDrawer extends StatelessWidget {
               child: Divider(color: Colors.yellow, thickness:  appSize.height * 0.001),
             ),
             ListTile(
-              leading: Icon(Icons.logout, color: Colors.white),
+              leading: SvgPicture.asset("assets/svgs/Logout.svg"),
               title: Text('Log Out', style: TextStyle(color: Colors.white)),
               onTap: () {
 

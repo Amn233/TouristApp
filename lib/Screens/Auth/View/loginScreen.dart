@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:touristapp/CustomWidgets/customButton.dart';
 import 'package:touristapp/CustomWidgets/customTextField.dart';
 import 'package:touristapp/Screens/Auth/View/signUpScreen.dart';
 import 'package:touristapp/resources/resource.dart';
@@ -20,13 +21,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
 
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      // Form is valid, perform login or other actions
-      // For now, we will just print the email for demonstration
-      print('Logging in with email: ${emailController.text}');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,20 +39,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomText(
                   title: Resource.texts.login,
                   textColor: Resource.colors.whiteColor,
-                  fontSize: appSize.height * 0.040,
+                  fontSize: appSize.height * 0.033,
                   textAlign: TextAlign.center,
                 ),
                 CustomText(
                   title: Resource.texts.welcome,
                   textColor: Resource.colors.whiteColor,
-                  fontSize: appSize.height * 0.022,
+                  fontSize: appSize.height * 0.019,
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: appSize.height * 0.07),
                 CustomTextField(
                   hintText: "Email/Phone number",
                   controller: emailController,
-                  prefixIcon: Icons.email_outlined,
+                  prefixIcon: "assets/svgs/message.svg",
                   obscureText: false,
                   validator: FieldValidator.validateEmail,
                   keyboardType: TextInputType.emailAddress,
@@ -67,10 +61,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 CustomTextField(
                   hintText: "Password",
                   controller: passwordController,
-                  prefixIcon: Icons.lock_outline,
+                  prefixIcon: "assets/svgs/lock.svg",
                   obscureText: !_isPasswordVisible,
                   validator: FieldValidator.validatePassword,
                   keyboardType: TextInputType.text,
+                  suffixIconColor: Resource.colors.mainColor,
                   suffixIcon: _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                   onSuffixIconPressed: () {
                     setState(() {
@@ -79,30 +74,26 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 SizedBox(height: appSize.height * 0.35),
-                GestureDetector(
-                  onTap: _submitForm,
-                  child: Container(
-                    height: 55,
-                    width: 400,
-                    color: Colors.white,
-                    child: Center(
-                      child: CustomText(
-                        title: Resource.texts.login,
-                        textColor: Resource.colors.mainColor,
-                        fontSize: 20,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
+                Center(
+                  child: AppButton(
+                    onPressed: (){
+
+                    },
+                    color: Resource.colors.whiteColor,
+                    width: appSize.width * 0.9,
+                    text: Resource.texts.login,
+                    height: appSize.height * 0.064,
+                    textColor: Resource.colors.mainColor,
                   ),
                 ),
-                SizedBox(height: appSize.height * 0.008),
+                SizedBox(height: appSize.height * 0.025),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomText(
                       title: Resource.texts.don,
                       textColor: Resource.colors.whiteColor,
-                      fontSize: appSize.height * 0.02,
+                      fontSize: appSize.height * 0.0185,
                       textAlign: TextAlign.center,
                     ),
                     GestureDetector(
@@ -112,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: CustomText(
                         title: Resource.texts.signupnow,
                         textColor: Colors.yellow,
-                        fontSize: appSize.height * 0.02,
+                        fontSize: appSize.height * 0.0185,
                         textAlign: TextAlign.center,
                       ),
                     )

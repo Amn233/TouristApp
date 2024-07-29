@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppImage {
-  String woman = "assets/Woman planning route for travel.png";
-  String medical = "assets/medical history pills.png";
-  String youngGirl = "assets/man.png";
+  String woman = "assets/images/women.png";
+  String medical = "assets/images/medical.png";
+  String youngGirl = "assets/images/man.png";
 }

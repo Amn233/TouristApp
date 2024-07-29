@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:touristapp/CustomWidgets/customButton.dart';
 import 'package:touristapp/CustomWidgets/customTextField.dart';
 import 'package:touristapp/Screens/Auth/View/signUpScreen.dart';
 import 'package:touristapp/Screens/HomeScreen/homescreen.dart';
@@ -24,7 +25,7 @@ class _OtpScreenState extends State<OtpScreen> {
     return Scaffold(
       backgroundColor: Resource.colors.mainColor,
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding:  EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,13 +34,13 @@ class _OtpScreenState extends State<OtpScreen> {
               CustomText(
                 title: Resource.texts.verify,
                 textColor: Resource.colors.whiteColor,
-                fontSize: appSize.height * 0.034,
+                fontSize: appSize.height * 0.033,
                 textAlign: TextAlign.start,
               ),
               CustomText(
                 title: Resource.texts.code,
                 textColor: Resource.colors.whiteColor,
-                fontSize: appSize.height * 0.020,
+                fontSize: appSize.height * 0.0185,
                 textAlign: TextAlign.start,
               ),
               SizedBox(height: appSize.height * 0.07),
@@ -49,6 +50,8 @@ class _OtpScreenState extends State<OtpScreen> {
                 controller: otpController,
                 obscureText: false,
                 animationType: AnimationType.scale,
+                keyboardType: TextInputType.phone,
+                textStyle: TextStyle(color: Colors.white),
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: BorderRadius.circular(5),
@@ -60,6 +63,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   activeColor: Colors.white,
                   selectedColor: Colors.white,
                   inactiveColor: Colors.white,
+
                 ),
                 backgroundColor: Resource.colors.mainColor,
                 onChanged: (value) {},
@@ -74,39 +78,36 @@ class _OtpScreenState extends State<OtpScreen> {
                   CustomText(
                     title: Resource.texts.receivecode,
                     textColor: Resource.colors.whiteColor,
-                    fontSize: appSize.height * 0.02,
+                    fontSize: appSize.height * 0.0185,
                     textAlign: TextAlign.center,
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Register()));
+                      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Register()));
                     },
                     child: CustomText(
                       title: Resource.texts.newone,
                       textColor: Colors.yellow,
-                      fontSize: appSize.height * 0.02,
+                      fontSize: appSize.height * 0.0185,
                       textAlign: TextAlign.center,
                     ),
                   )
                 ],
               ),
-              SizedBox(height: appSize.height * 0.05),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-                },
-                child: Container(
-                  height: 55,
-                  width: 400,
-                  color: Colors.white,
-                  child: Center(
-                    child: CustomText(
-                      title: "Verify",
-                      textColor: Resource.colors.mainColor,
-                      fontSize: 20,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
+              SizedBox(height: appSize.height * 0.07),
+              Center(
+                child: AppButton(
+                  onPressed: (){
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                    );
+                  },
+                  color: Resource.colors.whiteColor,
+                  width: appSize.width * 0.9,
+                  text: "Verify",
+                  height: appSize.height * 0.064,
+                  textColor: Resource.colors.mainColor,
                 ),
               ),
             ],
