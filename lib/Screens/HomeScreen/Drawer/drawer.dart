@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:touristapp/Screens/HomeScreen/Drawer/DrawerItems/hotelsScreen.dart';
 import 'package:touristapp/resources/resource.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -10,6 +11,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     var appSize = MediaQuery.of(context).size;
     return Drawer(
+      width: appSize.width * 0.8,
       child: Container(
         color: Resource.colors.mainColor,
         child: ListView(
@@ -41,7 +43,7 @@ class CustomDrawer extends StatelessWidget {
               leading: SvgPicture.asset("assets/svgs/home.svg"),
               title: Text('Hotels', style: TextStyle(color: Colors.white)),
               onTap: () {
-
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>Hotels()));
               },
             ),
             ListTile(

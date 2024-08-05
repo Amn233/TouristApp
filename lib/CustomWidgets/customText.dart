@@ -5,7 +5,8 @@ class CustomText extends StatelessWidget {
   final Color textColor;
   final double fontSize;
   final TextAlign textAlign;
-  final String? fontFamily; // Make fontFamily nullable
+  final String? fontFamily;
+  final FontWeight? fontWeight;
 
   const CustomText({
     super.key,
@@ -13,7 +14,8 @@ class CustomText extends StatelessWidget {
     required this.textColor,
     required this.fontSize,
     required this.textAlign,
-    this.fontFamily, // Make fontFamily optional
+    this.fontFamily,
+    this.fontWeight,
   });
 
   @override
@@ -24,7 +26,8 @@ class CustomText extends StatelessWidget {
       style: TextStyle(
         color: textColor,
         fontSize: fontSize,
-        fontFamily: fontFamily, // This will be null if not provided
+        fontFamily: fontFamily,
+        fontWeight: fontWeight,
       ),
     );
   }
